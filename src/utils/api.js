@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const API_URL = 'https://swabhagya-realty-backend.onrender.com/api';
+// This automatically uses the live URL on Netlify and localhost on your computer
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://swabhagya-realty-backend.onrender.com' 
+  : 'http://localhost:5000';
 
-// Create axios instance
 const api = axios.create({
   baseURL: API_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  headers: { 'Content-Type': 'application/json' },
 });
 
 // Add token to requests if it exists

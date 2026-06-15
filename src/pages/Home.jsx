@@ -19,13 +19,6 @@ const Home = () => {
     { value: '100%', label: 'Legal Compliance' },
   ];
 
-  // Featured properties with correct IDs from your data
-  const featuredProperties = [
-    { id: '1', title: 'Sunrise Heights', type: 'Residential', price: '₹45 Lakhs', location: 'Panchavati', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500' },
-    { id: '7', title: 'Business Plaza', type: 'Commercial', price: '₹1.5 Cr', location: 'CBD', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500' },
-    { id: '2', title: 'Green Valley Villas', type: 'Residential', price: '₹1.2 Cr', location: 'College Road', img: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=500' },
-  ];
-
   const handleSearch = () => {
     navigate('/projects');
   };
@@ -56,7 +49,7 @@ const Home = () => {
             transition={{ delay: 0.1 }}
             className="text-[#c8a45e] text-sm uppercase tracking-wider mb-4"
           >
-            WELCOME TO SWABHAGYA Rality
+            WELCOME TO SWABHAGYA REALITY
           </motion.h2>
 
           <motion.h1
@@ -152,7 +145,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Properties We Offer */}
+      {/* Properties We Offer - CLICKABLE CARDS */}
       <div className="py-20 bg-gray-50">
         <div className="container-custom">
           <motion.div
@@ -165,45 +158,57 @@ const Home = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="bg-white rounded-xl overflow-hidden shadow-lg group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800" 
-                  alt="Residential Properties"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6 text-white">
-                  <HomeIcon size={32} className="text-[#c8a45e] mb-2" />
-                  <h3 className="text-2xl font-bold">Residential Properties</h3>
-                  <p className="text-white/80 mt-1">Apartments | Villas | Independent Houses | Farmhouses</p>
+            {/* Residential Card - Clickable */}
+            <Link to="/projects?category=Residential">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="bg-white rounded-xl overflow-hidden shadow-lg group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800" 
+                    alt="Residential Properties"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 p-6 text-white">
+                    <HomeIcon size={32} className="text-[#c8a45e] mb-2" />
+                    <h3 className="text-2xl font-bold">Residential Properties</h3>
+                    <p className="text-white/80 mt-1">Apartments | Villas | Independent Houses | Farmhouses</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+                <div className="p-4 text-center border-t border-gray-100">
+                  <span className="text-[#c8a45e] font-medium group-hover:underline">View All Residential Properties →</span>
+                </div>
+              </motion.div>
+            </Link>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="bg-white rounded-xl overflow-hidden shadow-lg group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800" 
-                  alt="Commercial Properties"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6 text-white">
-                  <Store size={32} className="text-[#c8a45e] mb-2" />
-                  <h3 className="text-2xl font-bold">Commercial Properties</h3>
-                  <p className="text-white/80 mt-1">Shops | Offices | Showrooms | Warehouses</p>
+            {/* Commercial Card - Clickable */}
+            <Link to="/projects?category=Commercial">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="bg-white rounded-xl overflow-hidden shadow-lg group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800" 
+                    alt="Commercial Properties"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 p-6 text-white">
+                    <Store size={32} className="text-[#c8a45e] mb-2" />
+                    <h3 className="text-2xl font-bold">Commercial Properties</h3>
+                    <p className="text-white/80 mt-1">Shops | Offices | Showrooms | Warehouses</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+                <div className="p-4 text-center border-t border-gray-100">
+                  <span className="text-[#c8a45e] font-medium group-hover:underline">View All Commercial Properties →</span>
+                </div>
+              </motion.div>
+            </Link>
           </div>
         </div>
       </div>
@@ -216,7 +221,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Why Choose Swabhagya Rality?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Why Choose Swabhagya Reality?</h2>
             <p className="text-gray-500 max-w-2xl mx-auto">Your trusted partner in real estate since 2010</p>
           </motion.div>
           
@@ -240,8 +245,92 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Featured Properties - FIXED with correct IDs */}
+      {/* PROJECT STATUS SECTION - CLICKABLE CARDS */}
       <div className="py-20 bg-gray-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Project Status</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">Track the progress of our ongoing, completed and upcoming projects</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Ongoing Projects Card - Clickable */}
+            <Link to="/projects?status=ongoing">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-lg transition cursor-pointer group hover:-translate-y-2"
+              >
+                <div className="w-20 h-20 mx-auto mb-4 bg-yellow-100 rounded-full flex items-center justify-center group-hover:bg-yellow-200 transition">
+                  <span className="text-4xl">🏗️</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">Ongoing Projects</h3>
+                <p className="text-gray-500 mb-3">Currently under construction</p>
+                <div className="border-t pt-3 mt-2">
+                  <p className="text-[#c8a45e] font-semibold">3 Active Projects</p>
+                  <p className="text-sm text-gray-500 mt-1">Sunrise Heights • PG Complex • Industrial Warehouse</p>
+                </div>
+                <div className="mt-4 text-[#c8a45e] text-sm font-medium group-hover:underline">
+                  View Ongoing Projects →
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* Completed Projects Card - Clickable */}
+            <Link to="/projects?status=completed">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-lg transition cursor-pointer group hover:-translate-y-2"
+              >
+                <div className="w-20 h-20 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition">
+                  <span className="text-4xl">✅</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">Completed Projects</h3>
+                <p className="text-gray-500 mb-3">Successfully delivered</p>
+                <div className="border-t pt-3 mt-2">
+                  <p className="text-[#c8a45e] font-semibold">50+ Projects</p>
+                  <p className="text-sm text-gray-500 mt-1">Green Valley • Business Plaza • Green Valley Villas</p>
+                </div>
+                <div className="mt-4 text-[#c8a45e] text-sm font-medium group-hover:underline">
+                  View Completed Projects →
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* Upcoming Projects Card - Clickable */}
+            <Link to="/projects?status=upcoming">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-lg transition cursor-pointer group hover:-translate-y-2"
+              >
+                <div className="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition">
+                  <span className="text-4xl">🔜</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">Upcoming Projects</h3>
+                <p className="text-gray-500 mb-3">Coming soon</p>
+                <div className="border-t pt-3 mt-2">
+                  <p className="text-[#c8a45e] font-semibold">2 New Launches</p>
+                  <p className="text-sm text-gray-500 mt-1">Riverdale Farmhouses • ATM Spaces</p>
+                </div>
+                <div className="mt-4 text-[#c8a45e] text-sm font-medium group-hover:underline">
+                  View Upcoming Projects →
+                </div>
+              </motion.div>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Properties Preview */}
+      <div className="py-20 bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -253,7 +342,11 @@ const Home = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredProperties.map((property) => (
+            {[
+              { id: 1, title: 'Sunrise Heights', type: 'Residential', price: '₹45 Lakhs', location: 'Panchavati', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500' },
+              { id: 6, title: 'Business Plaza', type: 'Commercial', price: '₹1.5 Cr', location: 'CBD', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500' },
+              { id: 4, title: 'Green Valley Villas', type: 'Residential', price: '₹1.2 Cr', location: 'College Road', img: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=500' },
+            ].map((property) => (
               <motion.div
                 key={property.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -300,7 +393,7 @@ const Home = () => {
                 </div>
                 <div>
                   <span className="text-white font-bold text-xl">SWABHAGYA</span>
-                  <span className="text-[#c8a45e] font-bold text-xl"> Rality</span>
+                  <span className="text-[#c8a45e] font-bold text-xl"> REALITY</span>
                 </div>
               </div>
               <p className="text-sm leading-relaxed">
@@ -328,17 +421,16 @@ const Home = () => {
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-4">Newsletter</h4>
-              <p className="text-sm mb-3">Get latest property updates</p>
-              <div className="flex">
-                <input type="email" placeholder="Your email" className="flex-1 px-3 py-2 bg-gray-800 rounded-l-md focus:outline-none focus:border-[#c8a45e] text-sm" />
-                <button className="bg-[#c8a45e] text-white px-4 py-2 rounded-r-md text-sm hover:bg-[#b8923a] transition">Subscribe</button>
-              </div>
+              <h4 className="text-white font-semibold mb-4">Office Hours</h4>
+              <ul className="space-y-2 text-sm">
+                <li>Mon-Sat: 10AM - 7PM</li>
+                <li>Sunday: By Appointment</li>
+              </ul>
             </div>
           </div>
           
           <div className="border-t border-gray-800 pt-6 text-center text-xs">
-            <p>&copy; 2024 Swabhagya Rality. All rights reserved.</p>
+            <p>&copy; 2024 Swabhagya Reality. All rights reserved.</p>
           </div>
         </div>
       </footer>

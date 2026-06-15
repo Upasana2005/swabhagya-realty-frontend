@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Menu, X, Home, Building2, Calculator, Phone, LogIn, User, LogOut, Shield } from 'lucide-react';
@@ -10,13 +10,16 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout, isAuthenticated } = useAuth();
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleLogout = () => {
@@ -75,10 +78,10 @@ const Navbar = () => {
               </Link>
               
               <a 
-              href="https://wa.me/919272560005?text=Hi%20Swabhagya%20Reality%2C%20I'm%20interested%20in%20your%20properties"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#c8a45e] text-white px-5 py-2 rounded-md hover:bg-[#b8923a] transition text-sm font-medium"
+                href="https://wa.me/919272560005?text=Hi%20Swabhagya%20Reality%2C%20I'm%20interested%20in%20your%20properties"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#c8a45e] text-white px-5 py-2 rounded-md hover:bg-[#b8923a] transition text-sm font-medium"
               >
                 Enquire Now
               </a>
@@ -166,7 +169,7 @@ const Navbar = () => {
               </Link>
               
               <a 
-                href="https://wa.me/919272560005?text=Hi%20Swabhagya%20Rality"
+                href="https://wa.me/919272560005?text=Hi%20Swabhagya%20Reality"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full bg-[#c8a45e] text-white py-2 rounded-md text-center mt-3"

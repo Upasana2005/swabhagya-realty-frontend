@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { FavoritesProvider } from './context/FavoritesContext';
+import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
@@ -21,6 +22,7 @@ function App() {
     <Router>
       <AuthProvider>
         <FavoritesProvider>
+          <ScrollToTop />
           <Navbar />
           <Routes>
             {/* Public Routes */}

@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (userData) => {
     try {
       console.log('Signup called with:', userData);
-      const response = await axios.post('http://localhost:5000/api/auth/signup', userData);
+      const response = await axios.post('http://localhost:5000/auth/signup', userData);
       console.log('Signup response:', response.data);
       
       if (response.data.success) {
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       console.log('Login called with:', email);
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const response = await axios.post('http://localhost:5000/auth/login', { email, password });
       console.log('Login response:', response.data);
       
       if (response.data.success) {

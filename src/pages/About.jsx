@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   Award, Building2, Users, Shield, CheckCircle, 
-  MapPin, Phone, Mail, Clock, Target, Eye, Home, 
-  FileText, Calendar, Star, Heart 
+  MapPin, Phone, Mail, Target, Eye, Home, 
+  FileText
 } from 'lucide-react';
 
 const About = () => {
@@ -38,7 +38,7 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">About Swabhagya Rality</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">About Swabhagya Reality</h1>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
               Building Trust, Building Nashik since 2010
             </p>
@@ -80,7 +80,7 @@ const About = () => {
               <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Story</h2>
               <div className="w-16 h-1 bg-[#c8a45e] mb-6"></div>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Established in 2010, Swabhagya Rality has been at the forefront of Nashik's real estate development. 
+                Established in 2010, Swabhagya Reality has been at the forefront of Nashik's real estate development. 
                 With a commitment to quality, transparency, and customer satisfaction, we've delivered over 50 successful projects.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
@@ -100,7 +100,7 @@ const About = () => {
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <img 
                   src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800" 
-                  alt="About Swabhagya Rality"
+                  alt="About Swabhagya Reality"
                   className="w-full h-96 object-cover"
                 />
               </div>
@@ -254,7 +254,7 @@ const About = () => {
                 </div>
                 <div>
                   <span className="text-white font-bold text-xl">SWABHAGYA</span>
-                  <span className="text-[#c8a45e] font-bold text-xl"> Rality</span>
+                  <span className="text-[#c8a45e] font-bold text-xl"> REALITY</span>
                 </div>
               </div>
               <p className="text-sm leading-relaxed">
@@ -291,7 +291,7 @@ const About = () => {
           </div>
           
           <div className="border-t border-gray-800 pt-6 text-center text-xs">
-            <p>&copy; 2024 Swabhagya Rality. All rights reserved.</p>
+            <p>&copy; 2024 Swabhagya Reality. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -64,7 +64,6 @@ const PropertyDetails = () => {
   return (
     <div className="bg-gray-50 min-h-screen pt-24 pb-16">
       <div className="container-custom">
-        {/* Breadcrumb */}
         <div className="mb-6 text-sm">
           <Link to="/" className="text-gray-500 hover:text-[#c8a45e]">Home</Link>
           <span className="text-gray-400 mx-2">/</span>
@@ -153,6 +152,15 @@ const PropertyDetails = () => {
                 <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">{property.listingType}</span>
                 <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs">{property.category}</span>
                 <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs">{property.propertyType}</span>
+                {property.status && (
+                  <span className={`px-2 py-0.5 rounded text-xs ${
+                    property.status === 'ongoing' ? 'bg-yellow-100 text-yellow-700' :
+                    property.status === 'completed' ? 'bg-green-100 text-green-700' :
+                    'bg-blue-100 text-blue-700'
+                  }`}>
+                    {property.status.charAt(0).toUpperCase() + property.status.slice(1)}
+                  </span>
+                )}
               </div>
 
               <div className="border-t border-b border-gray-100 py-4 mb-5">
