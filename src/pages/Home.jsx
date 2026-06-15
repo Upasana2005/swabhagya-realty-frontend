@@ -56,7 +56,7 @@ const Home = () => {
             transition={{ delay: 0.1 }}
             className="text-[#c8a45e] text-sm uppercase tracking-wider mb-4"
           >
-            WELCOME TO SWABHAGYA REALTY
+            WELCOME TO SWABHAGYA Rality
           </motion.h2>
 
           <motion.h1
@@ -216,7 +216,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Why Choose Swabhagya Realty?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Why Choose Swabhagya Rality?</h2>
             <p className="text-gray-500 max-w-2xl mx-auto">Your trusted partner in real estate since 2010</p>
           </motion.div>
           
@@ -300,7 +300,7 @@ const Home = () => {
                 </div>
                 <div>
                   <span className="text-white font-bold text-xl">SWABHAGYA</span>
-                  <span className="text-[#c8a45e] font-bold text-xl"> REALTY</span>
+                  <span className="text-[#c8a45e] font-bold text-xl"> Rality</span>
                 </div>
               </div>
               <p className="text-sm leading-relaxed">
@@ -338,7 +338,7 @@ const Home = () => {
           </div>
           
           <div className="border-t border-gray-800 pt-6 text-center text-xs">
-            <p>&copy; 2024 Swabhagya Realty. All rights reserved.</p>
+            <p>&copy; 2024 Swabhagya Rality. All rights reserved.</p>
           </div>
         </div>
       </footer>

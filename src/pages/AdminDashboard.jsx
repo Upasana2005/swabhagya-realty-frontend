@@ -104,7 +104,7 @@ const AdminDashboard = () => {
               </div>
               <div>
                 <span className="font-bold text-gray-800 text-lg">Admin Dashboard</span>
-                <p className="text-xs text-gray-500">Swabhagya Realty</p>
+                <p className="text-xs text-gray-500">Swabhagya Rality</p>
               </div>
             </div>
             <button

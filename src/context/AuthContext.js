@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { login as loginApi, signup as signupApi, getCurrentUser } from '../utils/api';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
@@ -8,62 +8,66 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [token, setToken] = useState(localStorage.getItem('token'));
 
   useEffect(() => {
-    if (token) {
-      fetchUser();
-    } else {
-      setLoading(false);
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
     }
-  }, [token]);
+    setLoading(false);
+  }, []);
 
-  const fetchUser = async () => {
+  const signup = async (userData) => {
     try {
-      const response = await getCurrentUser();
-      setUser(response.data);
+      console.log('Signup called with:', userData);
+      const response = await axios.post('http://localhost:5000/api/auth/signup', userData);
+      console.log('Signup response:', response.data);
+      
+      if (response.data.success) {
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        setUser(response.data.user);
+        return { success: true };
+      } else {
+        return { success: false, error: response.data.message };
+      }
     } catch (error) {
-      console.error('Error fetching user:', error);
-      logout();
-    } finally {
-      setLoading(false);
+      console.error('Signup error:', error);
+      return { 
+        success: false, 
+        error: error.response?.data?.message || 'Signup failed. Please try again.' 
+      };
     }
   };
 
   const login = async (email, password) => {
     try {
-      const response = await loginApi({ email, password });
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      setToken(token);
-      setUser(user);
-      return { success: true };
+      console.log('Login called with:', email);
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      console.log('Login response:', response.data);
+      
+      if (response.data.success) {
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        setUser(response.data.user);
+        return { success: true };
+      } else {
+        return { success: false, error: response.data.message };
+      }
     } catch (error) {
-      return { success: false, error: error.response?.data?.message || 'Login failed' };
-    }
-  };
-
-  const signup = async (userData) => {
-    try {
-      const response = await signupApi(userData);
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      setToken(token);
-      setUser(user);
-      return { success: true };
-    } catch (error) {
-      return { success: false, error: error.response?.data?.message || 'Signup failed' };
+      console.error('Login error:', error);
+      return { 
+        success: false, 
+        error: error.response?.data?.message || 'Login failed. Please try again.' 
+      };
     }
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    setToken(null);
+    localStorage.removeItem('user');
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, signup, logout, isAuthenticated: !!user }}>
+    <AuthContext.Provider value={{ user, loading, signup, login, logout, isAuthenticated: !!user }}>
       {children}
     </AuthContext.Provider>
   );
